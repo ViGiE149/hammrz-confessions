@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Confess Anonymously</ion-title>
+    <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+ 
+
+  <div class="container">
+    <div class="centerImg">
+    <img src="assets/unknown.png">
+  </div>
+ <ion-item fill="outline">
+  <ion-label position="floating">Enter Confession Title </ion-label>
+  <ion-input type="text" [(ngModel)]="title"></ion-input>
+</ion-item>
+<br>
+
+  <ion-item fill="outline" >
+    <ion-select type="text" placeholder="select an emotion for your confesstion"  [(ngModel)]="emotion">
+      <ion-select-option value=""></ion-select-option>
+       <ion-select-option value="Pain">Pain</ion-select-option>
+       <ion-select-option value="Love">Love</ion-select-option>
+       <ion-select-option value="Disgust">Disgust</ion-select-option>
+       <ion-select-option value="Nightmare">Nightmare</ion-select-option>
+       <ion-select-option value="Curious">Curious</ion-select-option>
+       <ion-select-option >Ashamed</ion-select-option>
+       <ion-select-option value="Sad">Sad</ion-select-option>
+       <ion-select-option value="Scared">Scared</ion-select-option>
+       <ion-select-option value="Admiration">Admiration</ion-select-option>
+       <ion-select-option value="Awkwardness">Awkwardness</ion-select-option>
+       <ion-select-option value="Sexual desire">Sexual desire</ion-select-option>
+       <ion-select-option value="Guilt">Guilt</ion-select-option>
+       <ion-select-option value="Envy">Envy</ion-select-option>
+       <ion-select-option value="Modesty">Modesty</ion-select-option>
+       <ion-select-option value="Devotion">Devotion</ion-select-option>
+    </ion-select>
+  </ion-item>
+<br>
+
+<fieldset>
+  <legend>confession</legend>
+  <ion-textarea type="text" placeholder="enter your confession here!!!" [(ngModel)]="confessionBody"></ion-textarea>
+</fieldset>
+<br>
+<div class="container2">
+  <ion-button expand="block" (click)="submitConfession()">Confess</ion-button>
+</div>
+</div>
+
+
+</ion-content>
+

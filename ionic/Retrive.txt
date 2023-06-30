@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+@Component({
+  selector: 'app-comment-form',
+  templateUrl: './comment-form.component.html',
+  styleUrls: ['./comment-form.component.css']
+})
+export class CommentFormComponent implements OnInit {
+  confessionId: string;
+  user: string;
+  comment: string;
+
+  constructor(private firestore: AngularFirestore) { }
+
+  ngOnInit() {
+  }
+
+  addComment() {
+    const commentData = {
+      user: this.user,
+      comment: this.comment,
+      timestamp: new Date()
+    };
+
+    this.firestore.collection('confessions').doc(this.confessionId)
+      .update({
+        comments: firebase.firestore.FieldValue.arrayUnion(commentData)
+      })
+      .then(() => {
+        console.log('Comment added successfully!');
+      })
+      .catch((error) => {
+        console.error('Error adding comment: ', error);
+      });
+  }
+}

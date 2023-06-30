@@ -1,0 +1,42 @@
+ion-content{
+    --ion-background-color:#042c4c;
+      // --ion-background-color:#048278;
+    //--ion-background-color:#61e0ac;
+     //  --ion-background-color:#06cb8a;
+     // --ion-background-color:#f9f3f2;
+   }
+   ion-toolbar{
+    --ion-toolbar-background:#048278;
+}
+ion-list {
+    background-color: white;
+    margin-top: 20px;
+  }
+  
+  ion-item {
+    border: 1px solid #797474;
+    border-radius: 8px;
+    margin: 5px 0;
+    padding: 10px;
+  }
+  
+ion-card{
+  
+  background-color:rgb(5, 82, 96);
+}
+ion-icon{
+    margin-right: 15px;
+}
+ion-header ion-back-button {
+    display:none
+}
+ion-header ion-menu-button {
+    display:none
+}
+ion-item{
+  margin:20px 15px 0 15px;
+}
+.commentsCard{
+  width: 100%;
+}
+  

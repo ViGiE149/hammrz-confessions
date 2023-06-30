@@ -1,0 +1,63 @@
+ion-icon,span,ion-button{
+  margin-right: 8px;
+
+}
+
+ion-card{
+ background-color:rgb(5, 82, 96);
+}
+ion-icon{
+  color: white;
+  
+}
+.emoji{
+  text-align: center;
+}
+
+div {
+  --height: 29%;
+  --width:45%;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  
+}
+
+div::part(backdrop) {
+  background: rgba(209, 213, 219);
+  opacity: 1;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(14 116 144);
+  --color: white;
+}
+
+
+ion-content {
+  --background: rgb(14 116 144);
+  --color: white;
+}
+ion-grid{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 100%;
+}
+.my-modal{
+  .modal-wrapper{
+    position: absolute;
+    bottom :0;
+    height: 50%;
+    min-height: initial;
+    top:initial;
+
+
+    
+  }
+
+}
+
+
+
+

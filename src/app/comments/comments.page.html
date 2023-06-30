@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Comments</ion-title>
+    <ion-icon routerLink="/home" name="arrow-back" slot="end" size="large"></ion-icon>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  
+  <ion-card *ngFor="let confession of confessions">
+    <ion-card-header>
+      <ion-card-title>{{ confession.title }}</ion-card-title>
+      <ion-card-subtitle>{{ confession.emotion }}</ion-card-subtitle>
+      <ion-card-subtitle>{{ confession.timestamp?.toLocaleString() }}</ion-card-subtitle>
+    </ion-card-header>
+    
+    <ion-card-content>
+      {{ confession.confessionBody }}  
+    </ion-card-content>
+    
+    <ion-list>
+      <ion-item fill="outline" *ngFor="let comment of confession.comments">
+        <ion-label>{{ comment.comment }}</ion-label>
+        <ion-note slot="end">{{ comment.timestamp?.toLocaleString()  }}</ion-note>
+        <p>{{ comment.user }}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>zzsdrctyguhjikojihuyt</ion-card-title>
+      <ion-card-subtitle>sad</ion-card-subtitle>
+      <ion-card-subtitle>ber</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+       ezrctyghuijokpiouiyutcdroinbuiyvctxrzeyuig 
+       ezrctyghuijokpiouiyutcdroinbuiyvctxrzeyuig 
+       ezrctyghuijokpiouiyutcdroinbuiyvctxrzeyuig
+    </ion-card-content>  
+  </ion-card>
+  
+
+  <ion-item >
+    <ion-card class="commentsCard">what</ion-card>
+    <ion-note slot="end">i belive</ion-note>
+    <p>hj</p>
+  </ion-item>
+
+
+  <ion-item >
+    <ion-card class="commentsCard">
+      uydtfyguhijklih7gtfyg
+      ifyrtezterzerxtcfhygjhkjfyrtdftyuf54sd5fuyy
+      trsdtfygurdttdytdytduyfyhjvyhvjcjhcjhv
+      dtzxxgxgfzzzfgxfgztfzgxgrxryhxgrfhxfg 
+      ougfutdytyhchtxyhchyvhgciyytfyyyycyct</ion-card>
+    <ion-note slot="end">{{time?.toLocaleString()}}</ion-note>
+    <p>#4565</p>
+  </ion-item>
+
+  <ion-item >
+    <ion-card class="commentsCard">yeah</ion-card>
+    <ion-note slot="end">i belive</ion-note>
+    <p>hj</p>
+  </ion-item>
+
+
+
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea [autoGrow]="true" placeholder="enter comment">  </ion-textarea>
+    <ion-icon size="large" name="send-sharp" slot="end"></ion-icon>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,24 @@
+<ion-card *ngFor="let confession of confessions">
+  <ion-card-header>
+    <ion-card-title>{{ confession.title }}</ion-card-title>
+    <ion-card-subtitle>{{ confession.emotion }}</ion-card-subtitle>
+    <ion-card-subtitle>{{ confession.timestamp | date: 'MMMM d, y h:mm a' }}</ion-card-subtitle>
+  </ion-card-header>
+  
+  <ion-card-content>
+    {{ confession.confessionBody }}
+  </ion-card-content>
+  
+  <ion-item>
+    <ion-label>{{ confession.comments.length }} Comments</ion-label>
+    <ion-icon name="chatbubble-outline" slot="start"></ion-icon>
+  </ion-item>
+  
+  <ion-list>
+    <ion-item *ngFor="let comment of confession.comments">
+      <ion-label>{{ comment.comment }}</ion-label>
+      <ion-note slot="end">{{ comment.timestamp | date: 'MMMM d, y h:mm a' }}</ion-note>
+      <p>{{ comment.user }}</p>
+    </ion-item>
+  </ion-list>
+</ion-card>

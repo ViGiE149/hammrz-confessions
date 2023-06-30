@@ -1,0 +1,19 @@
+import { ActivatedRoute , Params} from '@angular/router';
+
+private router: Router,
+
+public navCtrl: NavController
+
+ionViewWillEnter() {
+    this.route.queryParams.subscribe((params: Params)  => {
+      if (params && params['data']) {
+   
+        this.email=params['data'];
+       
+       localStorage.setItem('email', this.email);
+    
+      }
+    });
+  }
+this.goToDestinationPage(this.email);
+this.navCtrl.navigateForward('/home', { queryParams: { data: data } });

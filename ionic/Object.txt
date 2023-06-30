@@ -1,0 +1,41 @@
+[
+  {
+    "title": "Confession Title",
+    "emotion": "Sad",
+    "confessionBody": "This is the body of the confession.",
+    "timestamp": "2022-03-23T10:00:00Z",
+    "comments": [
+      {
+        "user": "User1",
+        "comment": "This is the first comment.",
+        "timestamp": "2022-03-23T11:00:00Z"
+      },
+      {
+        "user": "User2",
+        "comment": "This is the second comment.",
+        "timestamp": "2022-03-23T12:00:00Z"
+      },
+      {
+        "user": "User3",
+        "comment": "This is the third comment.",
+        "timestamp": "2022-03-23T13:00:00Z"
+      }
+    ]
+  },
+  {
+    "title": "Another Confession",
+    "emotion": "Angry",
+    "confessionBody": "This is another confession.",
+    "timestamp": "2022-03-24T08:00:00Z",
+    "comments": [
+      {
+        "user": "User4",
+        "comment": "This is the first comment for the second confession.",
+        "timestamp": "2022-03-24T09:00:00Z"
+      },
+      {
+        "user": "User5",
+        "comment": "This is the second comment for the second confession.",
+        "timestamp": "2022-03-24T10:00:00Z"
+      }]
+}]

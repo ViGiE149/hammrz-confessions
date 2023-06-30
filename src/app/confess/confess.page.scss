@@ -1,0 +1,37 @@
+.container{
+    margin: -10px 5px 0 5px;
+    position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+ion-content{
+ --ion-background-color:#042c4c;
+   // --ion-background-color:#048278;
+ //--ion-background-color:#61e0ac;
+  //  --ion-background-color:#06cb8a;
+  // --ion-background-color:#f9f3f2;
+}
+ion-toolbar{
+    --ion-toolbar-background:#048278;
+}
+
+.container2{
+    text-align: center;
+    
+}
+.centerImg{
+ 
+    text-align: center;
+    
+}
+img{
+    width: 170px;
+    height: 169px;
+   
+}
+fieldset{
+    border-radius: 10px;
+}
+

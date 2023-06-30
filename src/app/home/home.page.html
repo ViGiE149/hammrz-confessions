@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Confessions
+    </ion-title>
+    <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<ion-card *ngFor="let confession of confessions">
+  <ion-card-header>
+    <ion-card-title>{{ confession.title }}</ion-card-title>
+    <ion-card-subtitle>{{ confession.emotion }}</ion-card-subtitle>
+    <ion-card-subtitle>{{ confession.timestamp?.toLocaleString()  }}</ion-card-subtitle>
+  </ion-card-header>
+  
+  <ion-card-content>
+    {{ confession.confessionBody }}
+  </ion-card-content>
+  
+  <ion-item>
+    <ion-label  (click)="passCommentsData(confession.confessionId)" >{{ confession.comments.length }} </ion-label>
+    <ion-icon (click)="passCommentsData(confession.confessionId)" name="chatbubble-outline" slot="start"></ion-icon>
+    <ion-label (click)="presentModal(confession?.confessionId)" slot="end">react {{ confession?.reactions?.length }}</ion-label>
+
+  </ion-item>
+</ion-card>
+
+
+
+        
+
+
+
+
+</ion-content>
