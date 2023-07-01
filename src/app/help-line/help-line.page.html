@@ -1,42 +1,45 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Help line </ion-title>
-    <ion-icon routerLink="/home" name="arrow-back" slot="end" size="large"></ion-icon>
+  <ion-toolbar color="primary">
+    <ion-title>Emergency Help Numbers</ion-title>
   </ion-toolbar>
-  
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <div class="page-intro">
+    <h2>Welcome to the Emergency Help Numbers Page!</h2>
+    <p>If you or someone you know is in immediate danger or requires urgent assistance, please use the following emergency contact numbers:</p>
+  </div>
 
-<ion-card color="danger">help line(numbers)</ion-card>
-
-<ion-grid>
-  <ion-row>
-    <ion-col>south African police</ion-col>
-    <ion-col>10111</ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>child line south africa</ion-col>
-    <ion-col>0800055555</ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>National counseling line</ion-col>
-    <ion-col>0861322322</ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>NAtional GBV Helpline</ion-col>
-    <ion-col>0800150150</ion-col>
-  </ion-row>
-
-  <ion-row>
-    <ion-col>Lagal Aid</ion-col>
-    <ion-col>0800110110</ion-col>
-  </ion-row>
-</ion-grid>
-
-<ion-row>
-  <ion-col>Suicide Help</ion-col>
-  <ion-col>0800567567</ion-col>
-</ion-row>
-
+  <ion-list class="help-numbers-list">
+    <ion-item class="help-number-item">
+      <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
+      <ion-label class="help-number-label">South African Police</ion-label>
+      <ion-note slot="end" class="help-number-note">10111</ion-note>
+    </ion-item>
+    <ion-item class="help-number-item">
+      <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
+      <ion-label class="help-number-label">Childline South Africa</ion-label>
+      <ion-note slot="end" class="help-number-note">0800 055 555</ion-note>
+    </ion-item>
+    <ion-item class="help-number-item">
+      <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
+      <ion-label class="help-number-label">National Counselling Line</ion-label>
+      <ion-note slot="end" class="help-number-note">0861 322 322</ion-note>
+    </ion-item>
+    <ion-item class="help-number-item">
+      <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
+      <ion-label class="help-number-label">National GBV Helpline</ion-label>
+      <ion-note slot="end" class="help-number-note">0800 150 150</ion-note>
+    </ion-item>
+    <ion-item class="help-number-item">
+      <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
+      <ion-label class="help-number-label">Legal Aid</ion-label>
+      <ion-note slot="end" class="help-number-note">0800 110 110</ion-note>
+    </ion-item>
+    <ion-item class="help-number-item">
+      <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
+      <ion-label class="help-number-label">Suicide Help</ion-label>
+      <ion-note slot="end" class="help-number-note">0800 567 567</ion-note>
+    </ion-item>
+  </ion-list>
 </ion-content>

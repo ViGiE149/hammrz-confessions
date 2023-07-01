@@ -29,16 +29,16 @@ export class EmojiPopUPPage implements OnInit {
   ngOnInit() {}
 
 
-  async close(id: any) {
+  async close(imoji: any) {
     try {
      const querySnapshot = await this.db
-        .collection('yourCollectionName', (ref) => ref.where('id', '==', 'mike'))
+        .collection('ConfessionDatabase', (ref) => ref.where("confessionId", '==', this.id))
         .get()
         .toPromise();
   
  querySnapshot?.forEach(async (doc: any) => {
         const currentReactions =await doc.data().reactions || [];
-      await  currentReactions.push(id);
+      await  currentReactions.push(imoji);
      await   doc.ref.update({ reactions: currentReactions });
       });
   
@@ -48,6 +48,27 @@ export class EmojiPopUPPage implements OnInit {
       console.error('Error pushing reaction:', error);
     }
   }
+  
+  // async close(id: any) {
+  //   try {
+  //     const querySnapshot = await this.db
+  //       .collection('yourCollectionName')
+  //       .where('id', '==', 'mike')
+  //       .get()
+  //       .toPromise();
+  
+  //     querySnapshot?.forEach(async (doc: any) => {
+  //       const currentReactions = doc.data().reactions || [];
+  //       currentReactions.push(id);
+  //       await doc.ref.update({ reactions: currentReactions });
+  //     });
+  
+  //     alert('Document successfully updated');
+  //     this.modalController.dismiss();
+  //   } catch (error) {
+  //     console.error('Error pushing reaction:', error);
+  //   }
+  // }
   
 
 /*

@@ -13,17 +13,17 @@
   <ion-card-header>
     <ion-card-title>{{ confession.title }}</ion-card-title>
     <ion-card-subtitle>{{ confession.emotion }}</ion-card-subtitle>
-    <ion-card-subtitle>{{ confession.timestamp?.toLocaleString()  }}</ion-card-subtitle>
+    <ion-card-subtitle>{{ confession.timestamp?.toDate() | date: 'yyyy-MM-dd HH:mm a'}}</ion-card-subtitle>
   </ion-card-header>
   
   <ion-card-content>
-    {{ confession.confessionBody }}
+    <ion-text color="dark">{{ confession.confessionBody }} </ion-text>
   </ion-card-content>
   
   <ion-item>
     <ion-label  (click)="passCommentsData(confession.confessionId)" >{{ confession.comments.length }} </ion-label>
     <ion-icon (click)="passCommentsData(confession.confessionId)" name="chatbubble-outline" slot="start"></ion-icon>
-    <ion-label (click)="presentModal(confession?.confessionId)" slot="end">react {{ confession?.reactions?.length }}</ion-label>
+    <ion-label (click)="presentModal(confession.confessionId)" slot="end">react {{ confession.reactions?.length }}</ion-label>
 
   </ion-item>
 </ion-card>

@@ -15,7 +15,7 @@ import { EmojiPopUPPage } from '../emoji-pop-up/emoji-pop-up.page';
 })
 export class HomePage {
 
- 
+  time=new Date();
   confessions:any;
   reactionsNum=0;
   
