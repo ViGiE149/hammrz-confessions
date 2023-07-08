@@ -50,7 +50,14 @@ async submitConfession(){
       confessionBody: this.confessionBody,
       timestamp: this.timestamp,
       comments:[],
-      reactions:[]
+      reactions:{ 
+         Love:0,
+         Care:0,
+         Haha:0,
+         Wow:0,
+         Sad:0,
+         Angry:0
+      }
     })
     .then((docRef) => {
       loader.dismiss();

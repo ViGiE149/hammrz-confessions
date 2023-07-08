@@ -26,6 +26,20 @@
     <ion-label (click)="presentModal(confession.confessionId)" slot="end">react {{ confession.reactions?.length }}</ion-label>
 
   </ion-item>
+
+  <div class="emoji-container">
+    <div *ngFor="let emotion of emotions" class="emoji-item">
+      <ion-button size="small" color="light" (click)="reactToConfession(emotion.label,confession.confessionId,confession.reactions[emotion.label])">
+     
+        <span class="emoji">{{ emotion.emoji }}</span>
+        <ion-badge >{{ confession.reactions[emotion.label]}}</ion-badge>
+      </ion-button>
+    </div>
+  </div>
+
+
+
+
 </ion-card>
 
 

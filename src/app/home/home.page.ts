@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { map, Observable } from 'rxjs';
+import { from, map, Observable } from 'rxjs';
 import { EmojiPopUPPage } from '../emoji-pop-up/emoji-pop-up.page';
 
 
@@ -18,6 +18,16 @@ export class HomePage {
   time=new Date();
   confessions:any;
   reactionsNum=0;
+
+
+    emotions = [
+    { label: 'Love', emoji: '❤️' },
+    { label: 'Care', emoji: '🥰' },
+    { label: 'Haha', emoji: '😂' },
+    { label: 'Wow', emoji: '😲' },
+    { label: 'Sad', emoji: '😢' },
+    { label: 'Angry', emoji: '😠' }
+  ];
   
   constructor(private modalController: ModalController,private db: AngularFirestore,private router: Router,public navCtrl: NavController) {
 
@@ -118,10 +128,51 @@ passCommentsData(data:string){
   this.navCtrl.navigateForward('/comments', { queryParams: { data: data } });
 
 }
+   
+reactToConfession(emotionLabel:any,confessionId: string,emotionLabelCount:any) {
+  // Update the reactions in the database based on condition
+  const query = this.db.collection('ConfessionDatabase', (ref) => ref.where("confessionId", '==', confessionId));
+
+  const queryObservable = from(query.get());
+console.log(emotionLabel);
+//console.log(emotionLabelCount);
+  queryObservable.subscribe(
+    (querySnapshot) => {
+      querySnapshot.forEach((documentSnapshot) => {
+        // Access the document ID
+        const documentId = documentSnapshot.id;
+  
+        // Access the data of each document
+        const data = documentSnapshot.data();
+  
+        // Do something with the document ID and data
+        console.log("Document ID:", documentId);
+        console.log("Document Data:", data);
+        
+
+       alert(documentId)
+       this.db.collection("ConfessionDatabase").doc(documentId).update({
+      
+          [`reactions.${emotionLabel}`] :(emotionLabelCount+1)
+          
+       
+      }).then(function() {
+        console.log("Frank food updated");
+      });
 
 
 
+      });
+    },
+    (error) => {
+      // Handle any errors that occur during the retrieval
+      console.error("Error getting documents: ", error);
+    }
+  );
 
 
 }
 
+
+
+}
