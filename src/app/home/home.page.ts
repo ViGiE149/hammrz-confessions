@@ -1,59 +1,57 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ModalController, NavController } from '@ionic/angular';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { from, map, Observable } from 'rxjs';
-import { EmojiPopUPPage } from '../emoji-pop-up/emoji-pop-up.page';
-
-
+import { Component } from "@angular/core";
+import { Router } from "@angular/router";
+import { ModalController, NavController } from "@ionic/angular";
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from "@angular/fire/compat/firestore";
+import { AngularFireStorage } from "@angular/fire/compat/storage";
+import { from, map, Observable } from "rxjs";
+import { EmojiPopUPPage } from "../emoji-pop-up/emoji-pop-up.page";
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: "app-home",
+  templateUrl: "home.page.html",
+  styleUrls: ["home.page.scss"],
 })
 export class HomePage {
+  time = new Date();
+  confessions: any;
+  reactionsNum = 0;
 
-  time=new Date();
-  confessions:any;
-  reactionsNum=0;
-
-
-    emotions = [
-    { label: 'Love', emoji: '❤️' },
-    { label: 'Care', emoji: '🥰' },
-    { label: 'Haha', emoji: '😂' },
-    { label: 'Wow', emoji: '😲' },
-    { label: 'Sad', emoji: '😢' },
-    { label: 'Angry', emoji: '😠' }
+  emotions = [
+    { label: "Love", emoji: "❤️" },
+    { label: "Care", emoji: "🥰" },
+    { label: "Haha", emoji: "😂" },
+    { label: "Wow", emoji: "😲" },
+    { label: "Sad", emoji: "😢" },
+    { label: "Angry", emoji: "😠" },
   ];
-  
-  constructor(private modalController: ModalController,private db: AngularFirestore,private router: Router,public navCtrl: NavController) {
 
+  constructor(
+    private modalController: ModalController,
+    private db: AngularFirestore,
+    private router: Router,
+    public navCtrl: NavController
+  ) {
     this.getConfessionsData();
   }
 
-  ngOnInit() {
- 
+  ngOnInit() {}
+
+
+  async presentModal(id: any) {
+    const modal = await this.modalController.create({
+      component: EmojiPopUPPage,
+      cssClass: "my-modal",
+      componentProps: {
+        id: id,
+      },
+    });
+    return await modal.present();
   }
 
-// Home Page
-async presentModal(id: any) {
-  const modal = await this.modalController.create({
-    component: EmojiPopUPPage,
-    cssClass: 'my-modal',
-    componentProps: {
-      id: id
-    }
-  });
-  return await modal.present();
-}
-
-
-
-
- /* passCommentsData(ii:any){}
+  /* passCommentsData(ii:any){}
  confessions=  [
     {
       "confessionId":"#1",
@@ -105,74 +103,69 @@ async presentModal(id: any) {
 
   }}}?*/
 
-
-
-
-
-
   getConfessionsData() {
-
-    this.db.collection('ConfessionDatabase')
-      .valueChanges()
-      .subscribe(data =>{
-        
-      this.confessions=data;  
-      console.log(data);
-
-  }); 
-
-}
-
-
-passCommentsData(data:string){
-  this.navCtrl.navigateForward('/comments', { queryParams: { data: data } });
-
-}
-   
-reactToConfession(emotionLabel:any,confessionId: string,emotionLabelCount:any) {
-  // Update the reactions in the database based on condition
-  const query = this.db.collection('ConfessionDatabase', (ref) => ref.where("confessionId", '==', confessionId));
-
-  const queryObservable = from(query.get());
-console.log(emotionLabel);
-//console.log(emotionLabelCount);
-  queryObservable.subscribe(
-    (querySnapshot) => {
-      querySnapshot.forEach((documentSnapshot) => {
-        // Access the document ID
-        const documentId = documentSnapshot.id;
-  
-        // Access the data of each document
-        const data = documentSnapshot.data();
-  
-        // Do something with the document ID and data
-        console.log("Document ID:", documentId);
-        console.log("Document Data:", data);
-        
-
-       alert(documentId)
-       this.db.collection("ConfessionDatabase").doc(documentId).update({
-      
-          [`reactions.${emotionLabel}`] :(emotionLabelCount+1)
-          
-       
-      }).then(function() {
-        console.log("Frank food updated");
+    this.db
+      .collection("ConfessionDatabase")
+      .get()
+      .subscribe((querySnapshot) => {
+        this.confessions = querySnapshot.docs.map((doc) => doc.data());
+        console.log(this.confessions);
       });
+  }
 
+  passCommentsData(data: string) {
+    this.navCtrl.navigateForward("/comments", { queryParams: { data: data } });
+  }
 
+  reactToConfession(
+    emotionLabel: any,
+    confessionId: string,
+    emotionLabelCount: any,
+    i: any
+  ) {
+    // Update the reactions in the database based on conditional
+    //alert(i);
+    const updatedEmotionLabelCount = emotionLabelCount + 1;
+    this.confessions[i].reactions[emotionLabel] = updatedEmotionLabelCount;
 
-      });
-    },
-    (error) => {
-      // Handle any errors that occur during the retrieval
-      console.error("Error getting documents: ", error);
-    }
-  );
+    //alert( this.confessions[i].reactions.emotionLabel);
+    //alert(emotionLabelCount+1)
+    const query = this.db.collection("ConfessionDatabase", (ref) =>
+      ref.where("confessionId", "==", confessionId)
+    );
 
+    const queryObservable = from(query.get());
+    console.log(emotionLabel);
+    //console.log(emotionLabelCount);
+    queryObservable.subscribe(
+      (querySnapshot) => {
+        querySnapshot.forEach((documentSnapshot) => {
+          // Access the document ID
+          const documentId = documentSnapshot.id;
 
-}
+          // Access the data of each document
+          const data = documentSnapshot.data();
 
+          // Do something with the document ID and data
+          console.log("Document ID:", documentId);
+          console.log("Document Data:", data);
 
-
+          //alert(documentId)
+          this.db
+            .collection("ConfessionDatabase")
+            .doc(documentId)
+            .update({
+              [`reactions.${emotionLabel}`]: emotionLabelCount + 1,
+            })
+            .then(function () {
+              console.log("Frank food updated");
+            });
+        });
+      },
+      (error) => {
+        // Handle any errors that occur during the retrieval
+        console.error("Error getting documents: ", error);
+      }
+    );
+  }
 }

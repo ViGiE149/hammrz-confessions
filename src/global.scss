@@ -32,12 +32,13 @@ ion-content{
     //--ion-background-color:#61e0ac;
      //  --ion-background-color:#06cb8a;
      // --ion-background-color:#f9f3f2;
+     box-shadow: none !important;
    }
    ion-toolbar{
        --ion-toolbar-background:#048278;
    }
    .my-modal{
    --background: transparent !important;
-   
+   box-shadow: none !important;
    }
    
