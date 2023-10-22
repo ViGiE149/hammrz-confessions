@@ -123,12 +123,10 @@ export class HomePage {
           if (change.type === "added") {
             // This code will run only when a new document is added
             this.confessions.push(change.payload.doc.data());
-
             const data = change.payload.doc.data();
             const id = change.payload.doc.id;
             console.log("New document added with ID: ", id);
             console.log(data);
-  
             // Do something with the new document here
           }
         });
