@@ -35,9 +35,10 @@ export class HomePage {
     public navCtrl: NavController
   ) {
     this.getConfessionsData();
+    this.getConfessionsListener();
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 
   async presentModal(id: any) {
@@ -112,6 +113,28 @@ export class HomePage {
         console.log(this.confessions);
       });
   }
+
+  getConfessionsListener() {
+    this.db
+      .collection("ConfessionDatabase")
+      .snapshotChanges() // Use snapshotChanges() instead of valueChanges()
+      .subscribe((querySnapshot) => {
+        querySnapshot.forEach((change) => {
+          if (change.type === "added") {
+            // This code will run only when a new document is added
+            this.confessions.push(change.payload.doc.data());
+
+            const data = change.payload.doc.data();
+            const id = change.payload.doc.id;
+            console.log("New document added with ID: ", id);
+            console.log(data);
+  
+            // Do something with the new document here
+          }
+        });
+      });
+  }
+  
 
   passCommentsData(data: string) {
     this.navCtrl.navigateForward("/comments", { queryParams: { data: data } });
