@@ -13,13 +13,13 @@
     <img src="assets/unknown.png">
   </div>
  <ion-item fill="outline">
-  <ion-label position="floating">Enter Confession Title </ion-label>
+  <ion-label class="label" position="floating">Enter Confession Title </ion-label>
   <ion-input type="text" [(ngModel)]="title"></ion-input>
 </ion-item>
 <br>
 
   <ion-item fill="outline" >
-    <ion-select type="text" placeholder="select an emotion for your confesstion"  [(ngModel)]="emotion">
+    <ion-select  class="select" type="text" placeholder="select an emotion for your confesstion"  [(ngModel)]="emotion">
       <ion-select-option value=""></ion-select-option>
        <ion-select-option value="Pain">Pain</ion-select-option>
        <ion-select-option value="Love">Love</ion-select-option>
@@ -41,8 +41,8 @@
 <br>
 
 <fieldset>
-  <legend>confession</legend>
-  <ion-textarea type="text" placeholder="enter your confession here!!!" [(ngModel)]="confessionBody"></ion-textarea>
+  <legend class="label">confession</legend>
+  <ion-textarea class="textarea" type="text" placeholder="enter your confession here!!!" [(ngModel)]="confessionBody"></ion-textarea>
 </fieldset>
 <br>
 <div class="container2">

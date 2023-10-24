@@ -3,7 +3,7 @@
     <ion-title>
       Confessions
     </ion-title>
-    <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
+    <ion-menu-button menu="main-menu" slot="end" ></ion-menu-button>
   </ion-toolbar>
 </ion-header>
 
@@ -23,7 +23,7 @@
   <ion-item>
     <ion-label class="comment-length" (click)="passCommentsData(confession.confessionId)" >{{ confession.comments.length }} </ion-label>
     <ion-icon (click)="passCommentsData(confession.confessionId)" name="chatbubble-outline" slot="start"></ion-icon>
-    <ion-label  class="comment-length" (click)="presentModal(confession.confessionId)" slot="end">react {{ confession.reactions?.length }}</ion-label>
+    <ion-label  class="comment-length" (click)="presentModal(confession.confessionId)" slot="end">ID : {{ confession.confessionId }}</ion-label>
 
   </ion-item>
 

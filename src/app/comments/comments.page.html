@@ -8,75 +8,41 @@
 
 <ion-content>
   
-  <ion-card *ngFor="let confession of confessions">
-    <ion-card-header>
-      <ion-card-title>{{ confession.title }}</ion-card-title>
-      <ion-card-subtitle>{{ confession.emotion }}</ion-card-subtitle>
-      <ion-card-subtitle>{{ confession.timestamp?.toLocaleString() }}</ion-card-subtitle>
-    </ion-card-header>
+  <ion-list>
+    <ion-item *ngFor="let comment of confessions">
+      <ion-label >
+        <strong [style.color]="randomColor">{{ comment.emotion }}:</strong> <ion-card>{{ comment.confessionBody }}</ion-card><br>
+      <p>  Reactions: Angry ({{ comment.reactions.Angry }}), Love ({{ comment.reactions.Love }}), Wow ({{ comment.reactions.Wow }})</p>
+      <p>Posted on: {{ comment.timestamp.toDate() | date: 'yyyy-MM-dd HH:mm a'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <!-- Add a new comment form -->
+  <ion-list *ngIf="confessions">
+    <ion-item fill="outline" *ngFor="let comment of confessions;let i=index">
     
-    <ion-card-content>
-      {{ confession.confessionBody }}  
-    </ion-card-content>
+        <ion-label  class="comment-label">{{ comment.comments[i] }}</ion-label>
+        <!-- <ion-note slot="end">{{ comment.timestamp?.toLocaleString() }}</ion-note>
+        <p>{{ comment?.user }}</p> -->
     
-    <ion-list>
-      <ion-item fill="outline" *ngFor="let comment of confession.comments">
-        <ion-label>{{ comment.comment }}</ion-label>
-        <ion-note slot="end">{{ comment.timestamp?.toLocaleString()  }}</ion-note>
-        <p>{{ comment.user }}</p>
-      </ion-item>
-    </ion-list>
-  </ion-card>
+     
+    </ion-item>
+  </ion-list>
   
-
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>zzsdrctyguhjikojihuyt</ion-card-title>
-      <ion-card-subtitle>sad</ion-card-subtitle>
-      <ion-card-subtitle>ber</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-       ezrctyghuijokpiouiyutcdroinbuiyvctxrzeyuig 
-       ezrctyghuijokpiouiyutcdroinbuiyvctxrzeyuig 
-       ezrctyghuijokpiouiyutcdroinbuiyvctxrzeyuig
-    </ion-card-content>  
-  </ion-card>
   
-
-  <ion-item >
-    <ion-card class="commentsCard">what</ion-card>
-    <ion-note slot="end">i belive</ion-note>
-    <p>hj</p>
-  </ion-item>
-
-
-  <ion-item >
-    <ion-card class="commentsCard">
-      uydtfyguhijklih7gtfyg
-      ifyrtezterzerxtcfhygjhkjfyrtdftyuf54sd5fuyy
-      trsdtfygurdttdytdytduyfyhjvyhvjcjhcjhv
-      dtzxxgxgfzzzfgxfgztfzgxgrxryhxgrfhxfg 
-      ougfutdytyhchtxyhchyvhgciyytfyyyycyct</ion-card>
-    <ion-note slot="end">{{time?.toLocaleString()}}</ion-note>
-    <p>#4565</p>
-  </ion-item>
-
-  <ion-item >
-    <ion-card class="commentsCard">yeah</ion-card>
-    <ion-note slot="end">i belive</ion-note>
-    <p>hj</p>
-  </ion-item>
-
-
 
 
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-textarea [autoGrow]="true" placeholder="enter comment">  </ion-textarea>
-    <ion-icon size="large" name="send-sharp" slot="end"></ion-icon>
-  </ion-toolbar>
+<ion-toolbar>
+
+      <ion-item class="comment">
+        <ion-textarea [(ngModel)]="newComment" placeholder="Comment" required></ion-textarea>
+     
+        <ion-icon slot="end" name="send" style="zoom:1.3" (click)="addComment()"></ion-icon>
+      </ion-item>
+    </ion-toolbar>  
+ 
 </ion-footer>

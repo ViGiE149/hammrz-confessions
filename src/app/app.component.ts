@@ -33,6 +33,7 @@ sideMenu()
         title : "about",
         url   : "/attended",
         icon  : "help-circle-outline"
+        
       },
       {
         title : "HELP LINE NUMBERS",

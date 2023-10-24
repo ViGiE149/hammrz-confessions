@@ -34,7 +34,11 @@ const routes: Routes = [
   {
     path: 'one',
     loadChildren: () => import('./one/one.module').then( m => m.OnePageModule)
+  },  {
+    path: 'about',
+    loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
   },
+
 ];
 
 @NgModule({

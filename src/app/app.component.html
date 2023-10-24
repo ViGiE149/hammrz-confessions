@@ -13,10 +13,11 @@
         <ion-menu-toggle auto-hide="true">
           <ion-item [routerLink]="pages.url"     routerDirection="forward" (click)="pages.click && pages.click()">
               <ion-icon [name]="pages.icon" [color]="pages.color" slot="start" ></ion-icon>
-              <ion-label [color]="pages.color">{{pages.title}}</ion-label>
+              <ion-label class="lebel-color" [color]="pages.color">{{pages.title}}</ion-label>
           </ion-item>
         </ion-menu-toggle>
         </ion-list>
+     
     </ion-content>
   </ion-menu>
 

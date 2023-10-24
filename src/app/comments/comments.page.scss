@@ -1,42 +1,107 @@
-ion-content{
-    --ion-background-color:#042c4c;
-      // --ion-background-color:#048278;
-    //--ion-background-color:#61e0ac;
-     //  --ion-background-color:#06cb8a;
-     // --ion-background-color:#f9f3f2;
-   }
-   ion-toolbar{
-    --ion-toolbar-background:#048278;
+/* Style the header */
+ion-header {
+  --background: #007bff; // Header background color
+  color: #fff; // Header text color
 }
+
+/* Center the title text in the header */
+ion-title ,ion-toolbar ion-icon{
+  text-align: center;
+  color: #ffffff;
+}
+
+/* Style the comment list */
 ion-list {
-    background-color: white;
-    margin-top: 20px;
-  }
-  
   ion-item {
-    border: 1px solid #797474;
-    border-radius: 8px;
-    margin: 5px 0;
-    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 2px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
   }
-  
-ion-card{
-  
-  background-color:rgb(5, 82, 96);
 }
-ion-icon{
-    margin-right: 15px;
+
+/* Add a bit of spacing between items */
+ion-list ion-item + ion-item {
+  margin-top: 15px;
 }
-ion-header ion-back-button {
-    display:none
+
+/* Style the strong tag within comment items */
+ion-label strong {
+  color: #007bff;
+  font-weight: bold;
 }
-ion-header ion-menu-button {
-    display:none
+
+/* Style the timestamp */
+ion-label small {
+  color: #f41515;
 }
-ion-item{
-  margin:20px 15px 0 15px;
+ion-label{
+
 }
-.commentsCard{
+/* Style the "Add a Comment" section */
+ion-footer {
+--background: !important; // Footer background color
+}
+
+
+
+/* Style the comment input field */
+ion-textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+  padding:0 ;
+  margin: 1 0 0 0;
+}
+
+/* Style the submit button */
+ion-button {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  padding: 12px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+ion-button[expand="full"] {
   width: 100%;
 }
-  
+
+ion-button:hover {
+  background-color: #0056b3;
+}
+.comment{
+  --background: transparent !important; 
+  align-items: center;
+}
+ion-icon{
+  padding: 0;
+  margin: 0;
+}
+ion-icon:hover {
+  transform: scale(1.2);
+  transition: transform 0.3s; /* Add a smooth transition effect */
+  color: #007bff;
+}
+ion-toolbar {
+  --ion-background:#042c4c; /* Set the footer background to transparent */
+}
+
+.comment {
+  --ion-background:#042c4c; /* Set the comment item background to transparent */
+}
+ion-card{
+ font-weight: bold;
+ font-size: large;
+ text-wrap:wrap;
+ color: #ccc;
+ padding: 10px;
+}
+.comment-label{
+  color: #ebebeb;
+}

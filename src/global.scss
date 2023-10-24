@@ -41,4 +41,7 @@ ion-content{
    --background: transparent !important;
    box-shadow: none !important;
    }
-   
+   ion-title ,ion-toolbar ion-icon{
+    text-align: center;
+    color: #ffffff;
+  }
