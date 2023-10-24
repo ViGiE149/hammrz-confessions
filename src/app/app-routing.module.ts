@@ -28,15 +28,16 @@ const routes: Routes = [
     loadChildren: () => import('./help-line/help-line.module').then( m => m.HelpLinePageModule)
   },
   {
-    path: 'test-this',
-    loadChildren: () => import('./test-this/test-this.module').then( m => m.TestTHisPageModule)
-  },
-  {
-    path: 'one',
-    loadChildren: () => import('./one/one.module').then( m => m.OnePageModule)
-  },  {
     path: 'about',
     loadChildren: () => import('./about/about.module').then( m => m.AboutPageModule)
+  },
+  {
+    path: 'email-support',
+    loadChildren: () => import('./email-support/email-support.module').then( m => m.EmailSupportPageModule)
+  },
+  {
+    path: 'terms-and-conditions',
+    loadChildren: () => import('./terms-and-conditions/terms-and-conditions.module').then( m => m.TermsAndConditionsPageModule)
   },
 
 ];

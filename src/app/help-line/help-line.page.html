@@ -12,32 +12,34 @@
   </div>
 
   <ion-list class="help-numbers-list">
-    <ion-item class="help-number-item">
+    <ion-item class="help-number-item" (click)="callNumber('10111')">
       <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
       <ion-label class="help-number-label">South African Police</ion-label>
       <ion-note slot="end" class="help-number-note">10111</ion-note>
     </ion-item>
-    <ion-item class="help-number-item">
+
+    <!-- Repeat the same structure for other emergency numbers -->
+    <ion-item class="help-number-item" (click)="callNumber('0800055555')">
       <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
       <ion-label class="help-number-label">Childline South Africa</ion-label>
       <ion-note slot="end" class="help-number-note">0800 055 555</ion-note>
     </ion-item>
-    <ion-item class="help-number-item">
+    <ion-item class="help-number-item" (click)="callNumber('0861322322')">
       <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
       <ion-label class="help-number-label">National Counselling Line</ion-label>
       <ion-note slot="end" class="help-number-note">0861 322 322</ion-note>
     </ion-item>
-    <ion-item class="help-number-item">
+    <ion-item class="help-number-item" (click)="callNumber('0800150150')">
       <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
       <ion-label class="help-number-label">National GBV Helpline</ion-label>
       <ion-note slot="end" class="help-number-note">0800 150 150</ion-note>
     </ion-item>
-    <ion-item class="help-number-item">
+    <ion-item class="help-number-item" (click)="callNumber('0800110110')">
       <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
       <ion-label class="help-number-label">Legal Aid</ion-label>
       <ion-note slot="end" class="help-number-note">0800 110 110</ion-note>
     </ion-item>
-    <ion-item class="help-number-item">
+    <ion-item class="help-number-item" (click)="callNumber('0800567567')">
       <ion-icon name="call" slot="start" class="call-icon"></ion-icon>
       <ion-label class="help-number-label">Suicide Help</ion-label>
       <ion-note slot="end" class="help-number-note">0800 567 567</ion-note>

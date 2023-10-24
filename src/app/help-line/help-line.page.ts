@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelpLinePage implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+  }
+  callNumber(phoneNumber: string) {
+    const telUrl = `tel:${phoneNumber}`;
+    window.open(`tel:${phoneNumber}`, '_system');
   }
 
 }

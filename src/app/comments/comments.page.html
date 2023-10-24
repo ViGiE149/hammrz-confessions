@@ -1,48 +1,66 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Comments</ion-title>
-    <ion-icon routerLink="/home" name="arrow-back" slot="end" size="large"></ion-icon>
+    <ion-icon
+      routerLink="/home"
+      name="arrow-back"
+      slot="end"
+      size="large"
+    ></ion-icon>
   </ion-toolbar>
-  
 </ion-header>
 
 <ion-content>
-  
   <ion-list>
     <ion-item *ngFor="let comment of confessions">
-      <ion-label >
-        <strong [style.color]="randomColor">{{ comment.emotion }}:</strong> <ion-card>{{ comment.confessionBody }}</ion-card><br>
-      <p>  Reactions: Angry ({{ comment.reactions.Angry }}), Love ({{ comment.reactions.Love }}), Wow ({{ comment.reactions.Wow }})</p>
-      <p>Posted on: {{ comment.timestamp.toDate() | date: 'yyyy-MM-dd HH:mm a'}}</p>
+      <ion-label>
+        <strong [style.color]="randomColor">{{ comment.emotion }}:</strong>
+        <ion-card>{{ comment.confessionBody }}</ion-card><br />
+        <p>
+          Reactions: Angry ({{ comment.reactions.Angry }}), Love ({{
+          comment.reactions.Love }}), Wow ({{ comment.reactions.Wow }})
+        </p>
+        <p>
+          Posted on: {{ comment.timestamp.toDate() | date: 'yyyy-MM-dd HH:mm
+          a'}}
+        </p>
       </ion-label>
     </ion-item>
   </ion-list>
 
-  <!-- Add a new comment form -->
+
   <ion-list *ngIf="confessions">
-    <ion-item fill="outline" *ngFor="let comment of confessions;let i=index">
-    
-        <ion-label  class="comment-label">{{ comment.comments[i] }}</ion-label>
-        <!-- <ion-note slot="end">{{ comment.timestamp?.toLocaleString() }}</ion-note>
-        <p>{{ comment?.user }}</p> -->
-    
-     
-    </ion-item>
+    <ion-item-group *ngFor="let confession of confessions; let i = index">
+      <ion-item-divider>
+        <ion-label class="confession-title">{{ confession.title }}</ion-label>
+      </ion-item-divider>
+      
+      <ion-item *ngFor="let comment of confession.comments; let j = index">
+        <ion-label class="comment-label">{{ comment }}</ion-label>
+        <!-- Optionally, display other comment-related information -->
+        <!-- <ion-note slot="end">{{ confession.timestamp?.toDate() | date: 'yyyy-MM-dd HH:mm a' }}</ion-note> -->
+        <!-- <p>{{ confession.user }}</p> -->
+      </ion-item>
+    </ion-item-group>
   </ion-list>
   
-  
-
-
 </ion-content>
 
 <ion-footer>
-<ion-toolbar>
+  <ion-toolbar>
+    <ion-item class="comment">
+      <ion-textarea
+        [(ngModel)]="newComment"
+        placeholder="Comment"
+        required
+      ></ion-textarea>
 
-      <ion-item class="comment">
-        <ion-textarea [(ngModel)]="newComment" placeholder="Comment" required></ion-textarea>
-     
-        <ion-icon slot="end" name="send" style="zoom:1.3" (click)="addComment()"></ion-icon>
-      </ion-item>
-    </ion-toolbar>  
- 
+      <ion-icon
+        slot="end"
+        name="send"
+        style="zoom: 1.3"
+        (click)="addComment()"
+      ></ion-icon>
+    </ion-item>
+  </ion-toolbar>
 </ion-footer>

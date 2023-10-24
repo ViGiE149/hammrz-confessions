@@ -35,6 +35,14 @@ export class CommentsPage implements OnInit {
 
 
    async addComment() {
+
+if(!this.newComment){
+alert("write your comment first then press send!");
+return
+}
+
+
+
     try {
       // Check if this.confessions[0] and this.confessions[0].comments exist
       if (this.confessions[0] && this.confessions[0].comments) {
@@ -55,8 +63,9 @@ export class CommentsPage implements OnInit {
   
         this.db.collection("ConfessionDatabase").doc(documentId).update({
           comments: this.confessions[0].comments // Update the comments in the Firestore document
-        }).then(() => {
-          this.getConfessionData();
+        }).then( () => {
+        this.getConfessionData();
+          this.newComment  = '';
           console.log("Comments updated successfully.");
         });
       });

@@ -1,52 +1,76 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Confessions
-    </ion-title>
-    <ion-menu-button menu="main-menu" slot="end" ></ion-menu-button>
+    <ion-title>Confessions</ion-title>
+    <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <ion-searchbar animated="true" [(ngModel)]="searchText"  (ionChange)="filterConfessions()" placeholder="Search by ID"></ion-searchbar>
 
-<ion-card *ngFor="let confession of confessions;let i = index">
-  <ion-card-header>
-    <ion-card-title>{{ confession.title }}</ion-card-title>
-    <ion-card-subtitle>{{ confession.emotion }}</ion-card-subtitle>
-    <ion-card-subtitle>{{ confession.timestamp?.toDate() | date: 'yyyy-MM-dd HH:mm a'}}</ion-card-subtitle>
-  </ion-card-header>
-  
-  <ion-card-content>
-    <ion-text color="dark">{{ confession.confessionBody }} </ion-text>
-  </ion-card-content>
-  
-  <ion-item>
-    <ion-label class="comment-length" (click)="passCommentsData(confession.confessionId)" >{{ confession.comments.length }} </ion-label>
-    <ion-icon (click)="passCommentsData(confession.confessionId)" name="chatbubble-outline" slot="start"></ion-icon>
-    <ion-label  class="comment-length" (click)="presentModal(confession.confessionId)" slot="end">ID : {{ confession.confessionId }}</ion-label>
+  <ng-container *ngIf="confessions.length!=0; else loadingSkeleton">
+    <ion-card *ngFor="let confession of confessions; let i = index">
+      <ion-card-header>
+        <ion-card-title>{{ confession.title }}</ion-card-title>
+        <ion-card-subtitle>{{ confession.emotion }}</ion-card-subtitle>
+        <ion-card-subtitle>
+          {{ confession.timestamp?.toDate() | date: 'yyyy-MM-dd HH:mm a' }}
+        </ion-card-subtitle>
+      </ion-card-header>
 
-  </ion-item>
+      <ion-card-content>
+        <ion-text color="dark">{{ confession.confessionBody }}</ion-text>
+      </ion-card-content>
 
-  <div class="emoji-container">
-    <div *ngFor="let emotion of emotions" class="emoji-item">
-      <ion-button size="small" color="light" (click)="reactToConfession(emotion.label,confession.confessionId,confession.reactions[emotion.label],i)">
-     
-        <span class="emoji">{{ emotion.emoji }}</span>
-        <ion-badge >{{ confession.reactions[emotion.label]}}</ion-badge>
-      </ion-button>
-    </div>
-  </div>
+      <ion-item>
+        <ion-label
+          class="comment-length"
+          (click)="passCommentsData(confession.confessionId)"
+        >
+          {{ confession.comments.length }}
+        </ion-label>
+        <ion-icon
+          class="chatbubble-outline"
+          (click)="passCommentsData(confession.confessionId)"
+          name="chatbubble-outline"
+          slot="start"
+        ></ion-icon>
+        <ion-label
+          class="comment-length"
+          (click)="presentModal(confession.confessionId)"
+          slot="end"
+        >
+          ID: {{ confession.confessionId }}
+        </ion-label>
+      </ion-item>
 
+      <div class="emoji-container">
+        <div *ngFor="let emotion of emotions" class="emoji-item">
+          <ion-button
+            size="small"
+            color="light"
+            (click)="reactToConfession(emotion.label, confession.confessionId, confession.reactions[emotion.label], i)"
+          >
+            <span class="emoji">{{ emotion.emoji }}</span>
+            <ion-badge>{{ confession.reactions[emotion.label] }}</ion-badge>
+          </ion-button>
+        </div>
+      </div>
+    </ion-card>
+  </ng-container>
 
-
-
-</ion-card>
-
-
-
-        
-
-
-
-
+  <!-- Loading skeleton for confessions -->
+  <ng-template #loadingSkeleton>
+    <ion-card *ngFor="let _ of [1, 2, 3, 4]">
+      <ion-card-header>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated width="80%"></ion-skeleton-text>
+        <ion-skeleton-text animated width="60%"></ion-skeleton-text>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-skeleton-text animated width="90%"></ion-skeleton-text>
+        <ion-skeleton-text animated width="90%"></ion-skeleton-text>
+      </ion-card-content>
+    </ion-card>
+  </ng-template>
 </ion-content>

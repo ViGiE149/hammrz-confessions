@@ -1,43 +1,56 @@
-.container{
-    margin: -10px 5px 0 5px;
+/* Container styling */
+.container {
     position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-ion-content{
- --ion-background-color:#042c4c;
-   // --ion-background-color:#048278;
- //--ion-background-color:#61e0ac;
-  //  --ion-background-color:#06cb8a;
-  // --ion-background-color:#f9f3f2;
-}
-ion-toolbar{
-    --ion-toolbar-background:#048278;
-}
-
-.container2{
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: -10px 5px 0 5px;
+  }
+  
+  /* Ion-content background color */
+  ion-content {
+    --ion-background-color: #042c4c;
+    /* You can choose one background color and remove the others */
+    /* --ion-background-color: #048278; */
+    /* --ion-background-color: #61e0ac; */
+    /* --ion-background-color: #06cb8a; */
+    /* --ion-background-color: #f9f3f2; */
+  }
+  
+  /* Ion-toolbar background color */
+  ion-toolbar {
+    --ion-toolbar-background: #048278;
+  }
+  
+  /* Container2 and centerImg styles */
+  .container2, .centerImg {
     text-align: center;
-    
-}
-.centerImg{
- 
-    text-align: center;
-    
-}
-img{
+  }
+  
+  /* Image styling */
+  img {
     width: 170px;
     height: 169px;
-   
-}
-fieldset{
+  }
+  
+  /* Fieldset border radius */
+  fieldset {
     border-radius: 10px;
-}
-.select,.label,ion-input {
-    color:white;
-}
-.textarea{
-    color:rgb(229, 229, 229);
-}
-
+  }
+  
+  /* Text color for select, label, and ion-input */
+  .select, .label, ion-input {
+    color: white;
+    display: contents;
+  }
+  
+  /* Text color for textarea */
+  .textarea , .checkBox {
+    color: rgb(229, 229, 229);
+  }
+ 
+  .checkBox{
+    align-items: center;
+    --border-color: #FF0000;
+  }

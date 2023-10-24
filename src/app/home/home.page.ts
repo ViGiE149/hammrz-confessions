@@ -16,8 +16,9 @@ import { EmojiPopUPPage } from "../emoji-pop-up/emoji-pop-up.page";
 })
 export class HomePage {
   time = new Date();
-  confessions: any;
+  confessions: any[]=[];
   reactionsNum = 0;
+  searchText='';
 
   emotions = [
     { label: "Love", emoji: "❤️" },
@@ -27,6 +28,7 @@ export class HomePage {
     { label: "Sad", emoji: "😢" },
     { label: "Angry", emoji: "😠" },
   ];
+  originalConfessions: any[]=[];
 
   constructor(
     private modalController: ModalController,
@@ -52,67 +54,17 @@ export class HomePage {
     return await modal.present();
   }
 
-  /* passCommentsData(ii:any){}
- confessions=  [
-    {
-      "confessionId":"#1",
-      "title": "Confession Title",
-      "emotion": "Sad",
-      "confessionBody": "This is the body of the confession.",
-      "timestamp": "2022-03-23T10:00:00Z",
-      "comments": [
-        {
-          "user": "User1",
-          "comment": "This is the first comment.",
-          "timestamp": "2022-03-23T11:00:00Z"
-        },
-        {
-          "user": "User2",
-          "comment": "This is the second comment.",
-          "timestamp": "2022-03-23T12:00:00Z"
-        },
-        {
-          "user": "User3",
-          "comment": "This is the third comment.",
-          "timestamp": "2022-03-23T13:00:00Z"
-        }
-      ]
-    },
-    {
-      "confessionId":"#2",
-      "title": "Another Confession",
-      "emotion": "Angry",
-      "confessionBody": "This is another confession.",
-      "timestamp": "2022-03-24T08:00:00Z",
-      "comments": [
-        {
-          "user": "User4",
-          "comment": "This is the first comment for the second confession.",
-          "timestamp": "2022-03-24T09:00:00Z"
-        },
-        {
-          "user": "User5",
-          "comment": "This is the second comment for the second confession.",
-          "timestamp": "2022-03-24T10:00:00Z"
-        }]
-  }]
-
-
-/////
-  passCommentsData(data:string){
-    this.navCtrl.navigateForward('/comments', { queryParams: { data: data } });
-
-  }}}?*/
-
   getConfessionsData() {
     this.db
       .collection("ConfessionDatabase")
       .get()
       .subscribe((querySnapshot) => {
-        this.confessions = querySnapshot.docs.map((doc) => doc.data());
+        this.originalConfessions = querySnapshot.docs.map((doc) => doc.data());
+        this.confessions = [...this.originalConfessions]; // Create a copy
         console.log(this.confessions);
       });
   }
+  
 
   getConfessionsListener() {
     this.db
@@ -144,34 +96,32 @@ export class HomePage {
     emotionLabelCount: any,
     i: any
   ) {
-    // Update the reactions in the database based on conditional
-    //alert(i);
+ 
     const updatedEmotionLabelCount = emotionLabelCount + 1;
     this.confessions[i].reactions[emotionLabel] = updatedEmotionLabelCount;
 
-    //alert( this.confessions[i].reactions.emotionLabel);
-    //alert(emotionLabelCount+1)
+
     const query = this.db.collection("ConfessionDatabase", (ref) =>
       ref.where("confessionId", "==", confessionId)
     );
 
     const queryObservable = from(query.get());
     console.log(emotionLabel);
-    //console.log(emotionLabelCount);
+
     queryObservable.subscribe(
       (querySnapshot) => {
         querySnapshot.forEach((documentSnapshot) => {
-          // Access the document ID
+    
           const documentId = documentSnapshot.id;
 
-          // Access the data of each document
+
           const data = documentSnapshot.data();
 
-          // Do something with the document ID and data
+      
           console.log("Document ID:", documentId);
           console.log("Document Data:", data);
 
-          //alert(documentId)
+ 
           this.db
             .collection("ConfessionDatabase")
             .doc(documentId)
@@ -184,9 +134,22 @@ export class HomePage {
         });
       },
       (error) => {
-        // Handle any errors that occur during the retrieval
+        
         console.error("Error getting documents: ", error);
       }
     );
   }
+
+
+  filterConfessions() {
+    if (this.searchText) {
+      this.confessions = this.originalConfessions.filter(confession => {
+        return confession.confessionId.includes(this.searchText);
+      });
+    } else {
+      // Reset to the original data when the search text is empty
+      this.confessions = [...this.originalConfessions];
+    }
+  }
+  
 }

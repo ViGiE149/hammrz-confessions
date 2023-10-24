@@ -31,9 +31,8 @@ sideMenu()
       },
       {
         title : "about",
-        url   : "/attended",
+        url   : "/about",
         icon  : "help-circle-outline"
-        
       },
       {
         title : "HELP LINE NUMBERS",

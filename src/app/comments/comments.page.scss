@@ -1,52 +1,46 @@
-/* Style the header */
+/* Header styling */
 ion-header {
-  --background: #007bff; // Header background color
-  color: #fff; // Header text color
+  --background: #007bff;
+  color: #fff;
 }
 
-/* Center the title text in the header */
-ion-title ,ion-toolbar ion-icon{
+/* Center the title and icon text */
+ion-title, ion-toolbar ion-icon {
   text-align: center;
-  color: #ffffff;
+  color: #fff;
 }
 
-/* Style the comment list */
-ion-list {
-  ion-item {
-    border-radius: 10px;
-    margin: 10px;
-    padding: 2px;
-    background-color: #f5f5f5;
-    box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
-  }
+/* Comment list styling */
+ion-list ion-item {
+  border-radius: 10px;
+  margin: 10px;
+  padding: 2px;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.1);
 }
 
-/* Add a bit of spacing between items */
+/* Spacing between items */
 ion-list ion-item + ion-item {
   margin-top: 15px;
 }
 
-/* Style the strong tag within comment items */
+/* Styling for strong tag within comment items */
 ion-label strong {
   color: #007bff;
   font-weight: bold;
 }
 
-/* Style the timestamp */
+/* Timestamp styling */
 ion-label small {
   color: #f41515;
 }
-ion-label{
 
-}
-/* Style the "Add a Comment" section */
+/* Comment footer styling */
 ion-footer {
---background: !important; // Footer background color
+  --background: transparent !important;
 }
 
-
-
-/* Style the comment input field */
+/* Comment input field styling */
 ion-textarea {
   width: 100%;
   border: 1px solid #ccc;
@@ -54,11 +48,11 @@ ion-textarea {
   padding: 10px;
   margin-bottom: 10px;
   background-color: #f9f9f9;
-  padding:0 ;
-  margin: 1 0 0 0;
+  padding: 0;
+  margin: 10px 0 0 0;
 }
 
-/* Style the submit button */
+/* Submit button styling */
 ion-button {
   background-color: #007bff;
   color: #fff;
@@ -75,33 +69,45 @@ ion-button[expand="full"] {
 ion-button:hover {
   background-color: #0056b3;
 }
-.comment{
-  --background: transparent !important; 
+
+/* Comment container styling */
+.comment {
+  --background: transparent !important;
   align-items: center;
 }
-ion-icon{
+
+/* Icon styling */
+ion-icon {
   padding: 0;
   margin: 0;
 }
+
 ion-icon:hover {
   transform: scale(1.2);
-  transition: transform 0.3s; /* Add a smooth transition effect */
+  transition: transform 0.3s;
   color: #007bff;
 }
+
+/* Toolbar styling */
 ion-toolbar {
-  --ion-background:#042c4c; /* Set the footer background to transparent */
+  --ion-background: #042c4c;
 }
 
+/* Comment item styling */
 .comment {
-  --ion-background:#042c4c; /* Set the comment item background to transparent */
+  --ion-background: #042c4c;
 }
-ion-card{
- font-weight: bold;
- font-size: large;
- text-wrap:wrap;
- color: #ccc;
- padding: 10px;
+
+/* Card styling */
+ion-card {
+  font-weight: bold;
+  font-size: large;
+  text-wrap: wrap;
+  color: #ccc;
+  padding: 0; /* You can specify the desired padding value */
 }
-.comment-label{
+
+/* Comment label styling */
+.comment-label {
   color: #ebebeb;
 }

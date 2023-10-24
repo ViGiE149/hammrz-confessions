@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { OnePage } from './one.page';
+import { EmailSupportPage } from './email-support.page';
 
-describe('OnePage', () => {
-  let component: OnePage;
-  let fixture: ComponentFixture<OnePage>;
+describe('EmailSupportPage', () => {
+  let component: EmailSupportPage;
+  let fixture: ComponentFixture<EmailSupportPage>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ OnePage ],
+      declarations: [ EmailSupportPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OnePage);
+    fixture = TestBed.createComponent(EmailSupportPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
