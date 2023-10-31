@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>emailSupport</ion-title>
+    <ion-title>Email Support</ion-title>
+    <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
+  <img src="assets/support-image.jpg" alt="Support Image" class="support-image" />
 
+  <ion-card class="transparent-card">
+    <ion-card-header>Contact Us</ion-card-header>
+    <ion-card-content>
+      <form>
+      
+
+<ion-item class="line">
+  <ion-label  class="label" position="stacked">Your subject</ion-label>
+  <ion-input class="input with-bottom-border" type="text" [(ngModel)]="subject" name="name"></ion-input>
+</ion-item>
+
+<ion-item class="line">
+  <ion-label class="label" position="stacked">Message</ion-label>
+  <ion-textarea class="input with-bottom-border" [(ngModel)]="message" name="message" rows="4"></ion-textarea>
+</ion-item>
+        
+
+        <ion-button expand="full" color="primary">Send</ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+

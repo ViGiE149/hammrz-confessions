@@ -42,7 +42,7 @@
   /* Text color for select, label, and ion-input */
   .select, .label, ion-input {
     color: white;
-    display: contents;
+  
   }
   
   /* Text color for textarea */
@@ -50,7 +50,25 @@
     color: rgb(229, 229, 229);
   }
  
-  .checkBox{
+  .checkBox , .checkBox1{
     align-items: center;
     --border-color: #FF0000;
+  }
+  .checkBox1{
+    margin-left: -15px;
+    padding: 0;
+  }
+  .checkBoxcontainer {
+    display:flex;
+     font-size: 2px;
+     align-items: center;
+     }
+  @media (max-width: 300px) {
+    .checkBoxcontainer {
+   display: grid;
+    font-size: 2px;
+    }
+    .checkBox1{
+    size: 114px;
+    }
   }

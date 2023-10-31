@@ -30,6 +30,11 @@ sideMenu()
         icon  : "newspaper-outline"
       },
       {
+        title : "support",
+        url   : "/email-support",
+        icon  : "mail-outline"
+      },
+      {
         title : "about",
         url   : "/about",
         icon  : "help-circle-outline"

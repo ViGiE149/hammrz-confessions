@@ -58,9 +58,9 @@
     </fieldset>
     <br />
     
-    <ion-item class="checkBoxcontainer"routerlink="/terms-and-conditions">
-    <ion-button class="checkBox" fill="clear" routerLink="/terms-and-conditions">I agree to the terms and conditions</ion-button> <ion-checkbox class="checkBox"  (click)="agreeToTerms()" ></ion-checkbox>
-  </ion-item>
+    <div class="checkBoxcontainer"routerlink="/terms-and-conditions">
+    <ion-button class="checkBox1" fill="clear" routerLink="/terms-and-conditions">I agree to the terms and conditions</ion-button> <div> <ion-checkbox class="checkBox"  (click)="agreeToTerms()" ></ion-checkbox></div>
+    </div>
     <div class="container2">
    
       <ion-button expand="block" [disabled]="termAndConditionChecked"   (click)="submitConfession()"

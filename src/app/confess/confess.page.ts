@@ -23,6 +23,17 @@ export class ConfessPage implements OnInit {
 
   async submitConfession() {
     try {
+  if(!this.emotion){
+    alert("confession emotion selection required!!!!")
+    return
+  }
+  if(this.confessionBody){
+    alert("confession body input] is requid!!!")
+    return
+  }
+
+
+
       // Generate a unique confession ID and timestamp
       const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       let result = '';
