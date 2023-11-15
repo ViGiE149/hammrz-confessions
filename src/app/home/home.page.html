@@ -3,10 +3,11 @@
     <ion-title>Confessions</ion-title>
     <ion-menu-button menu="main-menu" slot="end"></ion-menu-button>
   </ion-toolbar>
+  <ion-searchbar animated="true" [(ngModel)]="searchText"  (ionChange)="filterConfessions()" placeholder="Search by ID"></ion-searchbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-searchbar animated="true" [(ngModel)]="searchText"  (ionChange)="filterConfessions()" placeholder="Search by ID"></ion-searchbar>
+ 
 
   <ng-container *ngIf="confessions.length!=0; else loadingSkeleton">
     <ion-card *ngFor="let confession of confessions; let i = index">
@@ -37,7 +38,7 @@
         ></ion-icon>
         <ion-label
           class="comment-length"
-          (click)="presentModal(confession.confessionId)"
+  
           slot="end"
         >
           ID: {{ confession.confessionId }}

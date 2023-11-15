@@ -1,29 +1,37 @@
-
+/* Apply base styles to improve readability */
 * {
   color: white;
 }
 
-ion-icon, span, ion-button {
+/* Add a shared class for margin-right to avoid repetition */
+.ion-item-right-margin {
   margin-right: 8px;
 }
 
+/* Use the shared class for ion-icon, span, and ion-button */
+ion-icon, span, ion-button {
+  @extend .ion-item-right-margin;
+}
+
+/* Simplify ion-card styles */
 ion-card {
   background-color: rgb(42, 139, 156);
 }
 
-
+/* Use shared class for ion-icon */
 ion-icon {
+  @extend .ion-item-right-margin;
   color: white;
 }
 
-
+/* Simplify emoji class styles */
 .emoji {
   text-align: center;
   transform: scale(1.7);
-  transition: transform 400ms; 
+  transition: transform 400ms;
 }
 
-
+/* Use CSS variables for div styles */
 div {
   --height: 29%;
   --width: 45%;
@@ -31,18 +39,21 @@ div {
   --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
-
+/* Simplify ion-modal ion-toolbar styles */
 ion-modal ion-toolbar {
   --background: rgb(14 116 144);
   --color: white;
 }
-
-
+ion-title{
+  margin-left:10%;
+}
+/* Simplify ion-content styles */
 ion-content {
   --background: rgb(14 116 144);
   --color: white;
 }
 
+/* Simplify ion-grid styles */
 ion-grid {
   position: absolute;
   top: 50%;
@@ -51,7 +62,7 @@ ion-grid {
   width: 100%;
 }
 
-
+/* Simplify .my-modal styles */
 .my-modal .modal-wrapper {
   position: absolute;
   bottom: 0;
@@ -60,32 +71,44 @@ ion-grid {
   top: initial;
 }
 
+/* Simplify .emoji-container styles */
 .emoji-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  overflow-x: scroll;
 }
 
-
+/* Simplify .emoji-item styles */
 .emoji-item {
   margin-bottom: 8px;
 }
 
-
+/* Simplify ion-card-subtitle styles */
 ion-card-subtitle {
-  color: azure; 
+  color: azure;
 }
 
-
+/* Simplify .comment-length styles */
 .comment-length {
   color: white;
 }
 
-
+/* Simplify ion-button:active .emoji styles */
 ion-button:active .emoji {
-  transform: scale(3); 
+  transform: scale(3);
 }
 
+/* Simplify .chatbubble-outline:active styles */
 .chatbubble-outline:active {
   color: rgb(9, 194, 9);
+}
+ion-searchbar{
+  color:rgb(35, 34, 34);
+}
+/* Responsive styling for smaller screens */
+@media (max-width: 100px) {
+  .emoji-container .emoji-item ion-button {
+    width: 50px;
+  }
 }
