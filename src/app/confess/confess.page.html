@@ -10,11 +10,14 @@
     <div class="centerImg">
       <img src="assets/unknown.png" />
     </div>
-    <ion-item fill="outline">
-      <ion-label class="label" position="floating"
-        >Enter Confession Title
+    <ion-toggle [(ngModel)]="showTitle"></ion-toggle>
+    <ion-item fill="outline" [hidden]="!showTitle">
+      <ion-label class="label" position="floating">
+        Enter Confession Title
       </ion-label>
       <ion-input type="text" [(ngModel)]="title"></ion-input>
+    
+    
     </ion-item>
     <br />
 

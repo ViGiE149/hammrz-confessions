@@ -9,6 +9,7 @@ import { AngularFireStorage } from "@angular/fire/compat/storage";
 import { from, map, Observable } from "rxjs";
 import { EmojiPopUPPage } from "../emoji-pop-up/emoji-pop-up.page";
 
+
 @Component({
   selector: "app-home",
   templateUrl: "home.page.html",
@@ -34,15 +35,18 @@ export class HomePage {
     private modalController: ModalController,
     private db: AngularFirestore,
     private router: Router,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    
   ) {
     this.getConfessionsData();
     this.getConfessionsListener();
+    
   }
 
   ngOnInit() { }
 
 
+  
   async presentModal(id: any) {
     const modal = await this.modalController.create({
       component: EmojiPopUPPage,

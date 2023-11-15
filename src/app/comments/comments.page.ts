@@ -22,7 +22,9 @@ export class CommentsPage implements OnInit {
 
   constructor( private modalController: ModalController,
     private route: ActivatedRoute,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private navCtrl: NavController
+    
    ) {
 
     this.getThePassedData();
@@ -33,7 +35,10 @@ export class CommentsPage implements OnInit {
 
    ngOnInit() {}
 
-
+   refreshPage() {
+    
+    this.navCtrl.navigateForward('/home');
+  }
    async addComment() {
 
 if(!this.newComment){
