@@ -36,10 +36,10 @@ export class EmojiPopUPPage implements OnInit {
         .get()
         .toPromise();
   
- querySnapshot?.forEach(async (doc: any) => {
-        const currentReactions =await doc.data().reactions || [];
+      querySnapshot?.forEach(async (doc: any) => {
+      const currentReactions =await doc.data().reactions || [];
       await  currentReactions.push(imoji);
-     await   doc.ref.update({ reactions: currentReactions });
+      await   doc.ref.update({ reactions: currentReactions });
       });
   
       alert('Document successfully updated');
@@ -49,72 +49,7 @@ export class EmojiPopUPPage implements OnInit {
     }
   }
   
-  // async close(id: any) {
-  //   try {
-  //     const querySnapshot = await this.db
-  //       .collection('yourCollectionName')
-  //       .where('id', '==', 'mike')
-  //       .get()
-  //       .toPromise();
-  
-  //     querySnapshot?.forEach(async (doc: any) => {
-  //       const currentReactions = doc.data().reactions || [];
-  //       currentReactions.push(id);
-  //       await doc.ref.update({ reactions: currentReactions });
-  //     });
-  
-  //     alert('Document successfully updated');
-  //     this.modalController.dismiss();
-  //   } catch (error) {
-  //     console.error('Error pushing reaction:', error);
-  //   }
-  // }
-  
-
-/*
-   async close(id:any) {
-    
-
-    this.db.collection('ConfessionDatabase').ref
-    .where('confessionId', '==', this.id)
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        doc.ref
-          .addValue({
-           
-             reactions:this.array, 
-
-           
-          })
-          .then(() => {
-            console.log('Document successfully updated');
-            alert('Document successfully updated');
-            this.modalController.dismiss();
-            
-            // Alert or perform any other action here
-          })
-          .catch((error) => {
-            console.error('Error updating document: ', error);
-            alert(error.message);
-            // Alert or perform any other action here
-          });
-      });
-    })
-    .catch((error) => {
-      console.error('Error fetching documents: ', error);
-      alert(error.message);
-      // Alert or perform any other action here
-    });
-  
-  
-
-
-
-  }
-
-*/
-
+ 
   async closez(){
     const modal = await this.modalController.dismiss(
     {

@@ -28,10 +28,6 @@
 
 ion-content{
     --ion-background-color:#042c4c;
-      // --ion-background-color:#048278;
-    //--ion-background-color:#61e0ac;
-     //  --ion-background-color:#06cb8a;
-     // --ion-background-color:#f9f3f2;
      box-shadow: none !important;
    }
    ion-toolbar{
@@ -47,4 +43,7 @@ ion-content{
   }
   ion-menu-button{
     color: white;
+  }
+  body{
+    background-color: rgb(14 116 144);  
   }

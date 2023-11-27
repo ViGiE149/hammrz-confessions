@@ -76,7 +76,7 @@ ion-grid {
   display: flex;
   flex-direction: row;
   align-items: center;
-  overflow-x: scroll;
+  
 }
 
 /* Simplify .emoji-item styles */
@@ -110,5 +110,10 @@ ion-searchbar{
 @media (max-width: 100px) {
   .emoji-container .emoji-item ion-button {
     width: 50px;
+  
+  }
+  .emoji-container{
+    overflow-x: scroll;
+    scroll-behavior: smooth;
   }
 }
